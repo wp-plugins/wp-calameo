@@ -5,7 +5,7 @@ Requires at least: 2.1
 Tested up to: 2.8.6
 Stable tag: trunk
 
-This plugin allows to embed Calaméo publications in blog posts. Simply copy the WordPress embed code provided by Calaméo and paste it into your post. 
+This plugin allows to embed Calaméo publications in blog posts. Copy the WordPress embed code and paste it into your post. 
 
 == Description ==
 
