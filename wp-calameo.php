@@ -121,7 +121,7 @@ function calameo_render( $tags )
 			if ( empty($attributes['width']) )$attributes['width'] = '';
 			if ( empty($attributes['height']) ) $attributes['height'] = '400';
 
-			if ( !empty($attributes['view']) ) $flashvars .= '&amp;viewModeAtStart=' . $attributes['view'];
+			if ( empty($attributes['view']) ) $flashvars .= '&amp;viewModeAtStart=' . $attributes['view'];
 			if ( !empty($attributes['authid']) ) $flashvars .= '&amp;authid=' . $attributes['authid'];
 
 			$viewer_url = 'http://v.calameo.com/2.0/cviewer.swf';
