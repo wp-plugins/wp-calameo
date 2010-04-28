@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 1.02 =
+* [Bugfix] "view" parameter fixed.
+
 = 1.01 =
 * [Bugfix] Full-sized publication loading bug on MacOs Safari (allowScriptAccess added).
 
