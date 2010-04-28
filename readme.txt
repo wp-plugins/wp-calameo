@@ -27,8 +27,5 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
-= 1.0.1 =
-* [Bugfix] Full-sized publication loading bug on MacOs Safari (allowScriptAccess added).
-
-= 1.0.0 =
+= 1.0 =
 * Initial release.
