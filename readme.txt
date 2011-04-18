@@ -2,7 +2,7 @@
 Contributors: Mathieu Quisefit
 Tags: embed, calameo, publication, minicalameo, widget, document, pageflip
 Requires at least: 2.1
-Tested up to: 2.8.6
+Tested up to: 3.1.1
 Stable tag: trunk
 
 This plugin allows to embed Calaméo publications in blog posts. Copy the WordPress embed code and paste it into your post. 
@@ -26,6 +26,9 @@ This section describes how to install the plugin and get it working.
 Have questions or feedback? Please check our [support community](http://getsatisfaction.com/calameo).
 
 == Changelog ==
+
+= 1.2.0 =
+* [New] Added iPad, iPhone and iPod Touch support.
 
 = 1.1.0 =
 * [Bugfix] Full-sized publication loading bug on MacOs Safari (allowScriptAccess added).
