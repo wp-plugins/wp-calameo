@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 1.2.0
+    Version: 1.2.1
     Author: Calameo
 */
 
@@ -142,7 +142,7 @@ function calameo_render( $tags )
 
 	$id = 'calameo-viewer-' . $attributes['code'] . '-' . mktime() . '-' . rand(1000,9999);
 
-	$html .= '<object id="' . $id . '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '">';
+	$html .= '<object id="' . $id . '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '">';
 	$html .= '<param name="movie" value="' . $viewer_url . '?' . $flashvars . '" />';
 	$html .= '<param name="quality" value="high" />';
 	if ( !empty($attributes['wmode']) ) $html .= '<param name="wmode" value="' . $attributes['wmode'] . '" />';
@@ -150,7 +150,7 @@ function calameo_render( $tags )
 	$html .= '<param name="allowfullscreen" value="true" />';
 	$html .= '<param name="swfversion" value="9.0.45.0" />';
 	$html .= '<!--[if !IE]>-->';
-	$html .= '<object id="' . $id . '-inner" type="application/x-shockwave-flash" data="' . $viewer_url . '?' . $flashvars . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '">';
+	$html .= '<object id="' . $id . '-inner" type="application/x-shockwave-flash" data="' . $viewer_url . '?' . $flashvars . '" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '">';
 	$html .= '<!--<![endif]-->';
 	$html .= '<param name="movie" value="' . $viewer_url . '?' . $flashvars . '" />';
 	$html .= '<param name="quality" value="high" />';

@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 1.2.1 =
+* [Bugfix] Width and height attributes fixed.
+
 = 1.2.0 =
 * [New] Added iPad, iPhone and iPod Touch support.
 
