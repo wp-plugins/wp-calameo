@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 1.2.2 =
+* [Bugfix] Height attribute fixed inside DIV wrapper
+
 = 1.2.1 =
 * [Bugfix] Width and height attributes fixed.
 
