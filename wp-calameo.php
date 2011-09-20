@@ -1,8 +1,8 @@
-<?
+<?php
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 1.2.2
+    Version: 1.2.3
     Author: Calameo
 */
 

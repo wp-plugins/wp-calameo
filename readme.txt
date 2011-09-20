@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 1.2.3 =
+* [Bugfix] PHP short tags bug fixed
+
 = 1.2.2 =
 * [Bugfix] Height attribute fixed inside DIV wrapper
 
