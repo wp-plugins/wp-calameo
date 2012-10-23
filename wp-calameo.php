@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 1.2.3
+    Version: 2.0.0
     Author: Calameo
 */
 
@@ -87,11 +87,12 @@ function calameo_render( $tags )
 	$home_url = 'http://calameo.com';
 	$publish_url = 'http://calameo.com/upload';
 	$browse_url = 'http://calameo.com/browse/weekly/?o=7&w=DESC';
+	$viewer_url = 'http://v.calameo.com/';
 
 	// Preparing Flashvars
 	$flashvars  = 'bkcode=' . $attributes['code'];
 	if ( !empty($attributes['authid']) ) $flashvars .= '&amp;authid=' . $attributes['authid'];
-	$flashvars .= '&amp;langid=' . $attributes['lang'];
+	$flashvars .= '&amp;language=' . $attributes['lang'];
 	$flashvars .= '&amp;page=' . $attributes['page'];
 
 	switch ( $attributes['mode'] )
@@ -104,32 +105,30 @@ function calameo_render( $tags )
 			if ( empty($attributes['clicktarget']) ) $attributes['clicktarget'] = '_self';
 			if ( empty($attributes['clicktourl']) ) $attributes['clicktourl'] = '';
 			if ( empty($attributes['autoflip']) ) $attributes['autoflip'] = '0';
-			if ( empty($attributes['showarrows']) ) $attributes['showarrows'] = '1';
 
 			if ( empty($attributes['wmode']) ) $attributes['wmode'] = 'transparent';
-
-			$viewer_url = 'http://v.calameo.com/2.1/cmini.swf';
 
 			$flashvars .= '&amp;clickTo=' . urlencode($attributes['clickto']);
 			$flashvars .= '&amp;clickTarget=' . urlencode($attributes['clicktarget']);
 			$flashvars .= '&amp;clickToUrl=' . urlencode($attributes['clicktourl']);
 			$flashvars .= '&amp;autoFlip=' . max(0, intval($attributes['autoflip']));
-			$flashvars .= '&amp;showArrows=' . ( !empty($attributes['showarrows']) ? '1' : '0' );
-			$flashvars .= '&amp;mode=embed';
+			$flashvars .= '&amp;mode=mini';
 
 			break;
 
 		case 'book':
+		case 'viewer':
+		
+			$flashvars .= '&amp;mode=viewer';
+
 		default:
 			if ( empty($attributes['width']) )$attributes['width'] = '100%';
 			if ( empty($attributes['height']) ) $attributes['height'] = '400';
 
-			if ( !empty($attributes['view']) ) $flashvars .= '&amp;viewModeAtStart=' . $attributes['view'];
-
-			$viewer_url = 'http://v.calameo.com/2.1/cviewer.swf';
-
 			break;
 	}
+
+	if ( !empty($attributes['view']) ) $flashvars .= '&amp;view=' . $attributes['view'];
 
 	// Sizes and units
 	$attributes['widthUnit'] = ( strpos($attributes['width'], '%') ) ? '' : 'px';
@@ -142,27 +141,7 @@ function calameo_render( $tags )
 
 	$id = 'calameo-viewer-' . $attributes['code'] . '-' . mktime() . '-' . rand(1000,9999);
 
-	$html .= '<object id="' . $id . '" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '">';
-	$html .= '<param name="movie" value="' . $viewer_url . '?' . $flashvars . '" />';
-	$html .= '<param name="quality" value="high" />';
-	if ( !empty($attributes['wmode']) ) $html .= '<param name="wmode" value="' . $attributes['wmode'] . '" />';
-	$html .= '<param name="allowscriptaccess" value="always" />';
-	$html .= '<param name="allowfullscreen" value="true" />';
-	$html .= '<param name="swfversion" value="9.0.45.0" />';
-	$html .= '<!--[if !IE]>-->';
-	$html .= '<object id="' . $id . '-inner" type="application/x-shockwave-flash" data="' . $viewer_url . '?' . $flashvars . '" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '">';
-	$html .= '<!--<![endif]-->';
-	$html .= '<param name="movie" value="' . $viewer_url . '?' . $flashvars . '" />';
-	$html .= '<param name="quality" value="high" />';
-	if ( !empty($attributes['wmode']) ) $html .= '<param name="wmode" value="' . $attributes['wmode'] . '" />';
-	$html .= '<param name="allowscriptaccess" value="always" />';
-	$html .= '<param name="allowfullscreen" value="true" />';
-	$html .= '<param name="swfversion" value="9.0.45.0" />';
-	$html .= '<script type="text/javascript" src="http://s1.calameoassets.com/calameo-v4/widgets/loader/cloader.js"></script>';
-	$html .= '<!--[if !IE]>-->';
-	$html .= '</object>';
-	$html .= '<!--<![endif]-->';
-	$html .= '</object>';
+	$html .= '<iframe src="' . $viewer_url . '?' . $flashvars . '" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '" seamless="seamless" frameborder="0" allowtransparency="true"></iframe>';
 
 	if ( empty($attributes['hidelinks']) ) $html .= '<div style="margin: 4px 0px; font-size: 90%;"><a rel="nofollow" href="' . $publish_url . '">Publish</a> at <a href="' . $home_url . '">Calam&eacute;o</a> or <a href="' . $browse_url . '">browse</a> the library.</div>';
 

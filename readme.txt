@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 2.0.0 =
+* [New] Upgrade to embed code to use the new iframe version
+
 = 1.2.3 =
 * [Bugfix] PHP short tags bug fixed
 
