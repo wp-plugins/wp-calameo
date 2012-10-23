@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 2.0.1 =
+* [New] Added customization parameters available in the new viewer
+
 = 2.0.0 =
 * [New] Upgrade to embed code to use the new iframe version
 

@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 2.0.0
+    Version: 2.0.1
     Author: Calameo
 */
 
@@ -56,10 +56,13 @@ function calameo_render( $tags )
 
 	// Checking attributes
 	if ( empty($attributes['code']) ) return '';
-	if ( empty($attributes['mode']) ) $attributes['mode'] = 'book';
+	if ( empty($attributes['mode']) ) $attributes['mode'] = '';
 	if ( empty($attributes['page']) ) $attributes['page'] = 1;
 	if ( empty($attributes['wmode']) ) $attributes['wmode'] = '';
 	if ( empty($attributes['title']) ) $attributes['title'] = 'View this publication on Calam&eacute;o';
+	if ( !isset($attributes['showsharemenu']) ) $attributes['showsharemenu'] = 1;
+	
+	$attributes['showsharemenu'] = ( $attributes['showsharemenu'] == '1' || $attributes['showsharemenu'] == 'true' ) ? 'true' : 'false';
 
 	// Language
 	$language = preg_match('/$([a-z]+)/i', get_bloginfo('language'));
@@ -91,22 +94,22 @@ function calameo_render( $tags )
 
 	// Preparing Flashvars
 	$flashvars  = 'bkcode=' . $attributes['code'];
-	if ( !empty($attributes['authid']) ) $flashvars .= '&amp;authid=' . $attributes['authid'];
 	$flashvars .= '&amp;language=' . $attributes['lang'];
 	$flashvars .= '&amp;page=' . $attributes['page'];
-
+	$flashvars .= '&amp;showsharemenu=' . $attributes['showsharemenu'];
+	
 	switch ( $attributes['mode'] )
 	{
 		case 'mini':
-			if ( empty($attributes['width']) )$attributes['width'] = '240';
-			if ( empty($attributes['height']) ) $attributes['height'] = '150';
+			if ( empty($attributes['width']) )			$attributes['width'] = '240';
+			if ( empty($attributes['height']) )			$attributes['height'] = '150';
 
-			if ( empty($attributes['clickto']) ) $attributes['clickto'] = 'public';
-			if ( empty($attributes['clicktarget']) ) $attributes['clicktarget'] = '_self';
-			if ( empty($attributes['clicktourl']) ) $attributes['clicktourl'] = '';
-			if ( empty($attributes['autoflip']) ) $attributes['autoflip'] = '0';
+			if ( empty($attributes['clickto']) )		$attributes['clickto'] = 'public';
+			if ( empty($attributes['clicktarget']) )	$attributes['clicktarget'] = '_self';
+			if ( empty($attributes['clicktourl']) )		$attributes['clicktourl'] = '';
+			if ( empty($attributes['autoflip']) )		$attributes['autoflip'] = '0';
 
-			if ( empty($attributes['wmode']) ) $attributes['wmode'] = 'transparent';
+			if ( empty($attributes['wmode']) )			$attributes['wmode'] = 'transparent';
 
 			$flashvars .= '&amp;clickTo=' . urlencode($attributes['clickto']);
 			$flashvars .= '&amp;clickTarget=' . urlencode($attributes['clicktarget']);
@@ -128,7 +131,20 @@ function calameo_render( $tags )
 			break;
 	}
 
-	if ( !empty($attributes['view']) ) $flashvars .= '&amp;view=' . $attributes['view'];
+	if ( !empty($attributes['authid']) )				$flashvars .= '&amp;authid=' . $attributes['authid'];
+	if ( !empty($attributes['view']) )					$flashvars .= '&amp;view=' . $attributes['view'];
+	if ( !empty($attributes['allowminiskin']) )			$flashvars .= '&amp;allowminiskin=' . $attributes['allowminiskin'];
+	if ( !empty($attributes['skinurl']) )				$flashvars .= '&amp;skinurl=' . $attributes['skinurl'];
+	if ( !empty($attributes['styleurl']) )				$flashvars .= '&amp;styleurl=' . $attributes['styleurl'];
+	if ( !empty($attributes['shareurl']) )				$flashvars .= '&amp;shareurl=' . $attributes['shareurl'];
+	if ( !empty($attributes['locales']) )				$flashvars .= '&amp;locales=' . $attributes['locales'];
+	if ( !empty($attributes['volume']) )				$flashvars .= '&amp;volume=' . $attributes['volume'];
+	if ( !empty($attributes['pagefxopacity']) )			$flashvars .= '&amp;pagefxopacity=' . $attributes['pagefxopacity'];
+	if ( !empty($attributes['pagefxopacityonzoom']) )	$flashvars .= '&amp;pagefxopacityonzoom=' . $attributes['pagefxopacityonzoom'];
+	if ( !empty($attributes['ip']) )					$flashvars .= '&amp;ip=' . $attributes['ip'];
+	if ( !empty($attributes['apikey']) )				$flashvars .= '&amp;apikey=' . $attributes['apikey'];
+	if ( !empty($attributes['expires']) )				$flashvars .= '&amp;expires=' . $attributes['expires'];
+	if ( !empty($attributes['signature']) )				$flashvars .= '&amp;signature=' . $attributes['signature'];
 
 	// Sizes and units
 	$attributes['widthUnit'] = ( strpos($attributes['width'], '%') ) ? '' : 'px';
