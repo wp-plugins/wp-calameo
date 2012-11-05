@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 2.0.2 =
+* [Bugfix] Removed height CSS on container DIV
+
 = 2.0.1 =
 * [New] Added customization parameters available in the new viewer
 

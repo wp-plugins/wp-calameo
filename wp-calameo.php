@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 2.0.1
+    Version: 2.0.2
     Author: Calameo
 */
 
@@ -151,7 +151,7 @@ function calameo_render( $tags )
 	$attributes['heightUnit'] = ( strpos($attributes['height'], '%') ) ? '' : 'px';
 
 	// Generate HTML embed code
-	$html = '<div style="' . ( empty($attributes['styles']) ? 'text-align: center; width:' . $attributes['width'] . $attributes['widthUnit'] . '; height:' . $attributes['height'] . $attributes['heightUnit'] . '; margin: 12px auto;' : $attributes['styles'] ) . '">';
+	$html = '<div style="' . ( empty($attributes['styles']) ? 'text-align: center; width:' . $attributes['width'] . $attributes['widthUnit'] . '; margin: 12px auto;' : $attributes['styles'] ) . '">';
 
 	if ( empty($attributes['hidelinks']) ) $html .= '<div style="margin: 4px 0px;"><a href="' . $book_url . '">' . $attributes['title'] . '</a></div>';
 
