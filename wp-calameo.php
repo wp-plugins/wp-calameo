@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 2.0.2
+    Version: 2.0.3
     Author: Calameo
 */
 
@@ -90,7 +90,7 @@ function calameo_render( $tags )
 	$home_url = 'http://calameo.com';
 	$publish_url = 'http://calameo.com/upload';
 	$browse_url = 'http://calameo.com/browse/weekly/?o=7&w=DESC';
-	$viewer_url = 'http://v.calameo.com/';
+	$viewer_url = '//v.calameo.com/';
 
 	// Preparing Flashvars
 	$flashvars  = 'bkcode=' . $attributes['code'];
@@ -157,7 +157,7 @@ function calameo_render( $tags )
 
 	$id = 'calameo-viewer-' . $attributes['code'] . '-' . mktime() . '-' . rand(1000,9999);
 
-	$html .= '<iframe src="' . $viewer_url . '?' . $flashvars . '" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '" seamless="seamless" frameborder="0" allowtransparency="true"></iframe>';
+	$html .= '<iframe src="' . $viewer_url . '?' . $flashvars . '" width="' . $attributes['width'] . '" height="' . $attributes['height'] . '" style="width:' . $attributes['width'] . $attributes['widthUnit'] . ';height:' . $attributes['height'] . $attributes['heightUnit'] . '" frameborder="0" scrolling="no" allowtransparency allowfullscreen></iframe>';
 
 	if ( empty($attributes['hidelinks']) ) $html .= '<div style="margin: 4px 0px; font-size: 90%;"><a rel="nofollow" href="' . $publish_url . '">Publish</a> at <a href="' . $home_url . '">Calam&eacute;o</a> or <a href="' . $browse_url . '">browse</a> the library.</div>';
 

@@ -27,6 +27,9 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 == Changelog ==
 
+= 2.0.3 =
+* [Change] Updated the HTML embed code to support SSL if needed
+
 = 2.0.2 =
 * [Bugfix] Removed height CSS on container DIV
 
