@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 2.0.3
+    Version: 2.0.4
     Author: Calameo
 */
 
@@ -133,6 +133,7 @@ function calameo_render( $tags )
 
 	if ( !empty($attributes['authid']) )				$flashvars .= '&amp;authid=' . $attributes['authid'];
 	if ( !empty($attributes['view']) )					$flashvars .= '&amp;view=' . $attributes['view'];
+	if ( !empty($attributes['wmode']) )					$flashvars .= '&amp;wmode=' . $attributes['wmode'];
 	if ( !empty($attributes['allowminiskin']) )			$flashvars .= '&amp;allowminiskin=' . $attributes['allowminiskin'];
 	if ( !empty($attributes['skinurl']) )				$flashvars .= '&amp;skinurl=' . $attributes['skinurl'];
 	if ( !empty($attributes['styleurl']) )				$flashvars .= '&amp;styleurl=' . $attributes['styleurl'];
