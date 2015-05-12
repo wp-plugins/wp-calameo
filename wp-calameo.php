@@ -2,7 +2,7 @@
 /*
     Plugin Name: WP Calameo
     Description: Embed Calameo publications & miniCalameo inside a post
-    Version: 2.0.4
+    Version: 2.0.5
     Author: Calameo
 */
 
@@ -61,7 +61,7 @@ function calameo_render( $tags )
 	if ( empty($attributes['wmode']) ) $attributes['wmode'] = '';
 	if ( empty($attributes['title']) ) $attributes['title'] = 'View this publication on Calam&eacute;o';
 	if ( !isset($attributes['showsharemenu']) ) $attributes['showsharemenu'] = 1;
-	
+
 	$attributes['showsharemenu'] = ( $attributes['showsharemenu'] == '1' || $attributes['showsharemenu'] == 'true' ) ? 'true' : 'false';
 
 	// Language
@@ -97,7 +97,7 @@ function calameo_render( $tags )
 	$flashvars .= '&amp;language=' . $attributes['lang'];
 	$flashvars .= '&amp;page=' . $attributes['page'];
 	$flashvars .= '&amp;showsharemenu=' . $attributes['showsharemenu'];
-	
+
 	switch ( $attributes['mode'] )
 	{
 		case 'mini':
@@ -121,7 +121,7 @@ function calameo_render( $tags )
 
 		case 'book':
 		case 'viewer':
-		
+
 			$flashvars .= '&amp;mode=viewer';
 
 		default:
