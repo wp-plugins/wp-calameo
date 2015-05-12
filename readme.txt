@@ -11,7 +11,7 @@ This plugin allows to embed Calaméo publications in blog posts. Copy the WordPr
 
 This plugin allows to embed Calaméo publications in blog posts. Simply copy the WordPress embed code provided by Calaméo and paste it into your post. 
 
-[http://calameo.com](http://calameo.com)
+[http://www.calameo.com](http://www.calameo.com)
 
 == Installation ==
 
