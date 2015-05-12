@@ -29,6 +29,7 @@ Have questions or feedback? Please check our [support community](http://getsatis
 
 = 2.0.5 =
 * [Check] Plugin works with WordPress 4+
+* [New] Added plugin icon (svg+png)
 
 = 2.0.4 =
 * [Bugfix] "wmode" parameter fixed
